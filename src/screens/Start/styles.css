@@ -1,0 +1,32 @@
+.start__container {
+  height: 100vh;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(#43E97B), to(#38F9D7));
+  background: linear-gradient(90deg, #43E97B 0%, #38F9D7 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.start__container .start__logo {
+  width: 270px;
+}
+
+.start__container .start__logo img {
+  width: 100%;
+}
+
+.start__container .start__box {
+  text-align: center;
+}
+/*# sourceMappingURL=styles.css.map */

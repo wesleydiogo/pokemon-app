@@ -1,10 +1,10 @@
-import './App.css';
+import Routes from './screens/routes';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Pokemon App</h1>
+        <Routes />
       </header>
     </div>
   );
