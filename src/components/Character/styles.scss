@@ -1,5 +1,5 @@
 .character {
-    background: #ccc;
+    // background: #ccc;
     overflow: hidden;
 
     position: absolute;
@@ -7,10 +7,8 @@
 .character--front {
   background: url('../../assets/Front.png') no-repeat no-repeat;
   background-size: contain;
-  overflow: hidden;
 }
 .character--walking {
   background: url('../../assets/Walking.gif') no-repeat no-repeat;
   background-size: contain;
-  overflow: hidden;
 }
