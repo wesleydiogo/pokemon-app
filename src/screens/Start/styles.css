@@ -3,6 +3,8 @@
   width: 100%;
   background: -webkit-gradient(linear, left top, right top, from(#43E97B), to(#38F9D7));
   background: linear-gradient(90deg, #43E97B 0%, #38F9D7 100%);
+  -webkit-transition: all ease .2s;
+  transition: all ease .2s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,15 +20,15 @@
           align-items: center;
 }
 
-.start__container .start__logo {
+.start__container .start__box {
+  text-align: center;
+}
+
+.start__container .start__box .start__logo {
   width: 270px;
 }
 
-.start__container .start__logo img {
+.start__container .start__box .start__logo img {
   width: 100%;
-}
-
-.start__container .start__box {
-  text-align: center;
 }
 /*# sourceMappingURL=styles.css.map */

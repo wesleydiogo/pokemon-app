@@ -1,11 +1,13 @@
+import { Map, Character } from '../../components';
 import './styles.css';
 
 export default () => {
+
     return (
-        <div className="container">
-            <div className="game__background">
-                
-            </div>
-        </div>
+        <main className="game__camera">
+            <Map>
+                <Character />
+            </Map>
+        </main>
     );
 }
