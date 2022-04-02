@@ -1,28 +1,33 @@
+import { useState } from "react";
 import { Tile } from "..";
 import { canvas } from "../../settings/helpers";
+import { ECanvas } from "../../settings/types";
+import Button from "../Button";
 
 const getCanvasMap = () => {
-    const tilesArray = [];
+    const canvasArray = [];
 
     for (let x = 0; x < canvas.length; x++) {
         for (let y = 0; y < canvas[x].length; y++) {
 
             const position = { x, y }
             const textValue = canvas[x][y];
+            const key = `${x}:${y}`
 
-            tilesArray.push(<Tile position={position} textValue={textValue} />)
+            canvasArray.push(<Tile key={key} position={position} textValue={textValue} />);
         }
     }
 
-    return tilesArray;
+    return canvasArray;
 }
 
-export default function Debugger() {
+const Debugger: React.FC = () => {
     const tiles = getCanvasMap();
 
     return (
-        <div>
+        < div>
             {tiles}
         </div>
     );
-} 
+}
+export default Debugger;

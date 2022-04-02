@@ -1,20 +1,26 @@
+import './styles.css';
 import { TILE_SIZE } from '../../settings/constants';
 import useCharacterMoviment from '../../hooks/useCharMoviment';
-import './styles.css';
+import { IPositionProps } from '../../settings/types';
 
-export default () => {
-    const { charPosition } = useCharacterMoviment();
+interface IProps {
+    initialPosition: IPositionProps
+}
 
+const Character = ({initialPosition}: IProps) => {
+    const charPosition = useCharacterMoviment(initialPosition);
+    
     return (
         <div
             className={`character character--${charPosition.isWalking ? 'walking' : 'front'}`}
             style={{
                 width: TILE_SIZE,
                 height: TILE_SIZE,
-                left: TILE_SIZE * charPosition.x,
-                top: TILE_SIZE * charPosition.y,
-                transform: `scaleX(${charPosition.isLeftDirection ? -1 : 1})`
+                transform: `scaleX(${charPosition.isLeftDirection ? -1 : 1})`,
+                top: (TILE_SIZE * charPosition.x) - TILE_SIZE,
+                left: (TILE_SIZE * charPosition.y) - TILE_SIZE
             }}
         />
     );
 }
+export default Character;

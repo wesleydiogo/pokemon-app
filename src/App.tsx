@@ -1,9 +1,9 @@
 import Routes from './screens/routes';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-        <Routes />
+      <Routes />
     </div>
   );
 }

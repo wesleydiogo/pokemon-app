@@ -1,36 +1,42 @@
-import { EDirection, charPositionProps } from './types';
+import { EDirection, IPositionProps, ECanvas } from './types';
 
-export const handleMoviment: any = (direction: EDirection, position: charPositionProps) => {
+export const handleMoviment: any = (direction: EDirection, position: IPositionProps) => {
 
     switch (direction) {
         case EDirection.UP:
-            return { ...position, y: position.y - 1, isWalking: true }
+            return { ...position, x: position.x - 1, isWalking: true }
         case EDirection.DOWN:
-            return { ...position, y: position.y + 1, isWalking: true }
+            return { ...position, x: position.x + 1, isWalking: true }
         case EDirection.LEFT:
-            return { ...position, x: position.x - 1, isWalking: true, isLeftDirection: true }
+            return { ...position, y: position.y - 1, isWalking: true, isLeftDirection: true }
         case EDirection.RIGHT:
-            return { ...position, x: position.x + 1, isWalking: true, isLeftDirection: false }
+            return { ...position, y: position.y + 1, isWalking: true, isLeftDirection: false }
         default:
             return { ...position, isWalking: false }
     }
 }
 
-// TODO VALOR 1 SÃO OBSTÁCULOS
+const FL = ECanvas.FLOOR;
+const OB = ECanvas.OBSTACLE;
+const PO = ECanvas.POKEMON;
+const CH = ECanvas.CHARACTER; 
+
 export const canvas = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1],
-    [1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
-    [1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1],
-    [1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1],
-    [1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-]
+    [OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB],
+    [OB, FL, FL, FL, FL, FL, FL, FL, OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB],
+    [OB, FL, FL, FL, FL, FL, FL, FL, OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB],
+    [OB, FL, FL, FL, OB, FL, FL, FL, OB, OB, FL, FL, FL, OB, FL, OB, FL, FL, FL, OB, OB, OB],
+    [OB, FL, FL, OB, OB, OB, FL, FL, OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB, OB, OB],
+    [OB, FL, FL, FL, OB, FL, PO, FL, OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB],
+    [OB, FL, FL, FL, FL, FL, FL, FL, FL, OB, OB, OB, FL, OB, OB, OB, OB, OB, OB, OB, OB, OB],
+    [OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB],
+    [OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB],
+    [OB, FL, FL, FL, FL, FL, FL, OB, OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB],
+    [OB, FL, FL, FL, FL, FL, OB, OB, OB, OB, FL, FL, FL, CH, FL, FL, FL, OB, OB, FL, FL, OB],
+    [OB, FL, FL, FL, OB, FL, OB, OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB, OB, FL, FL, OB],
+    [OB, FL, FL, OB, OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB],
+    [OB, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, FL, OB],
+    [OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB],
+];
+
+// export const  
