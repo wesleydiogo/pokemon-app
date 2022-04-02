@@ -1,12 +1,11 @@
 .character {
-    // background: #ccc;
     overflow: hidden;
-
     position: absolute;
+    z-index: 1;
 }
 .character--front {
   background: url('../../assets/Front.png') no-repeat no-repeat;
-  background-size: contain;
+  background-size: 100%;
 }
 .character--walking {
   background: url('../../assets/Walking.gif') no-repeat no-repeat;

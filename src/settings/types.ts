@@ -4,3 +4,10 @@ export interface charPositionProps {
     isWalking: boolean,
     isLeftDirection: boolean
 }
+
+export enum EDirection {
+    UP = 'ArrowUp',
+    DOWN = 'ArrowDown',
+    LEFT = 'ArrowLeft',
+    RIGHT = 'ArrowRight'
+}

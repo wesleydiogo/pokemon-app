@@ -11,8 +11,8 @@ export default () => {
             style={{
                 width: TILE_SIZE,
                 height: TILE_SIZE,
-                top: TILE_SIZE * charPosition.y,
                 left: TILE_SIZE * charPosition.x,
+                top: TILE_SIZE * charPosition.y,
                 transform: `scaleX(${charPosition.isLeftDirection ? -1 : 1})`
             }}
         />

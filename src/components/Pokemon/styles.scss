@@ -1,0 +1,10 @@
+.pokemon {
+  overflow: hidden;
+  position: absolute;
+  visibility: hidden;
+}
+.pokemon--found {
+  background: url('../../assets/Bulbasaur.gif') no-repeat no-repeat;
+  background-size: contain;
+  visibility: visible;
+}
