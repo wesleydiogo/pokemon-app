@@ -35,11 +35,11 @@ const Map = () => {
 
     return (
         <>
-            {/* <Button
+            <Button
                 className="primary"
                 onClick={() => setActiveDebugger(!activeDebugger)}>
                 Debugger
-            </Button> */}
+            </Button>
             <div className="map" style={{ minWidth: MAP_SIZE_X, minHeight: MAP_SIZE_Y }}>
                 {
                     activeDebugger &&
