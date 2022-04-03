@@ -31,7 +31,7 @@ const getCanvasMap = () => {
 
 const elements = getCanvasMap();
 const Map = () => {
-    const [activeDebugger, setActiveDebugger] = useState(true);
+    const [activeDebugger, setActiveDebugger] = useState(false);
 
     return (
         <>

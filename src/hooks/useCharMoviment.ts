@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { handleMoviment } from '../settings/helpers';
+import { checkValidMoviment, handleMoviment, handleNextMoviment } from '../settings/helpers';
 import { EDirection, IPositionProps } from '../settings/types';
 import useEventListener from '@use-it/event-listener';
 
 const useCharacterMoviment = (initialPosition: IPositionProps) => {
-    const [charPosition, setCharPosition] = useState<IPositionProps>({
+    const [position, setPosition] = useState<IPositionProps>({
         x: initialPosition.x,
         y: initialPosition.y,
         isWalking: false,
@@ -13,11 +13,16 @@ const useCharacterMoviment = (initialPosition: IPositionProps) => {
 
     useEventListener('keydown', (e: KeyboardEvent) => {
         if (Object.values(EDirection).includes(e.key as EDirection)) {
-            let newCharPosition: IPositionProps = handleMoviment(e.key, charPosition);
-            setCharPosition(newCharPosition);
+
+            const nextMoviment = handleNextMoviment(e.key as EDirection, position);
+            const isValidMoviment = checkValidMoviment(nextMoviment);
+
+            isValidMoviment &&
+                setPosition(nextMoviment);
+
         }
     });
 
-    return charPosition;
+    return position;
 }
 export default useCharacterMoviment;
