@@ -1,3 +1,4 @@
+import './app.styles.css';
 import Routes from './screens/routes';
 
 const App = () => {

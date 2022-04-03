@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import usePokemonMoviment from '../../hooks/usePokemonMoviment';
 import { TILE_SIZE } from '../../settings/constants';
 import { IPositionProps } from '../../settings/types';
 import './styles.css';
@@ -8,13 +9,12 @@ interface IProps {
 }
 
 const Pokemon = ({initialPosition}: IProps) => {
-    const [pokemonPosition, setPokemonPosition] = useState(initialPosition);
-    const [pokemonFound, setPokemonFound] = useState(true);
-    const charScale = 0.9
+    const pokemonPosition = usePokemonMoviment(initialPosition); 
+    const charScale = 0.9;
 
     return (
         <div
-            className={`pokemon ${pokemonFound && 'pokemon--found'}`}
+            className='pokemon pokemon--found'
             style={{
                 width: TILE_SIZE * charScale,
                 height: TILE_SIZE * charScale,

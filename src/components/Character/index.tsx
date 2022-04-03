@@ -12,7 +12,7 @@ const Character = ({initialPosition}: IProps) => {
     
     return (
         <div
-            className={`character character--${charPosition.isWalking ? 'walking' : 'front'}`}
+            className={`character character--${charPosition.isMoviment ? 'moviment' : 'front'}`}
             style={{
                 width: TILE_SIZE,
                 height: TILE_SIZE,

@@ -1,7 +1,7 @@
 export interface IPositionProps {
     x: number,
     y: number,
-    isWalking?: boolean,
+    isMoviment?: boolean,
     isLeftDirection?: boolean
 }
 

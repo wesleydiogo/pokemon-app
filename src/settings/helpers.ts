@@ -1,34 +1,18 @@
 import { EDirection, IPositionProps, ECanvas } from './types';
 
-export const handleMoviment = (direction: EDirection, position: IPositionProps): IPositionProps => {
-
-    switch (direction) {
-        case EDirection.UP:
-            return { ...position, x: position.x - 1, isWalking: true }
-        case EDirection.DOWN:
-            return { ...position, x: position.x + 1, isWalking: true }
-        case EDirection.LEFT:
-            return { ...position, y: position.y - 1, isWalking: true, isLeftDirection: true }
-        case EDirection.RIGHT:
-            return { ...position, y: position.y + 1, isWalking: true, isLeftDirection: false }
-        default:
-            return { ...position, isWalking: false }
-    }
-}
-
 export const handleNextMoviment = (direction: EDirection, position: IPositionProps): IPositionProps => {
 
     switch (direction) {
         case EDirection.UP:
-            return { ...position, x: position.x - 1, isWalking: true }
+            return { ...position, x: position.x - 1, isMoviment: true }
         case EDirection.DOWN:
-            return { ...position, x: position.x + 1, isWalking: true }
+            return { ...position, x: position.x + 1, isMoviment: true }
         case EDirection.LEFT:
-            return { ...position, y: position.y - 1, isWalking: true, isLeftDirection: true }
+            return { ...position, y: position.y - 1, isMoviment: true, isLeftDirection: true }
         case EDirection.RIGHT:
-            return { ...position, y: position.y + 1, isWalking: true, isLeftDirection: false }
+            return { ...position, y: position.y + 1, isMoviment: true, isLeftDirection: false }
         default:
-            return { ...position, isWalking: false }
+            return { ...position, isMoviment: false }
     }
 }
 
@@ -63,4 +47,19 @@ export const checkValidMoviment = (nextPosition: IPositionProps) => {
     }
 
     return true
+}
+
+export const handleRandomDirection = () => {
+    const randomDirections = Math.floor(Math.random() * (4 - 0));
+
+    switch (randomDirections) {
+        case 0:
+            return EDirection.UP
+        case 1:
+            return EDirection.DOWN
+        case 2:
+            return EDirection.LEFT
+        case 3:
+            return EDirection.RIGHT
+    }
 }

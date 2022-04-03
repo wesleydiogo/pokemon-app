@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { checkValidMoviment, handleMoviment, handleNextMoviment } from '../settings/helpers';
+import { checkValidMoviment, handleNextMoviment } from '../settings/helpers';
 import { EDirection, IPositionProps } from '../settings/types';
 import useEventListener from '@use-it/event-listener';
 
@@ -7,9 +7,12 @@ const useCharacterMoviment = (initialPosition: IPositionProps) => {
     const [position, setPosition] = useState<IPositionProps>({
         x: initialPosition.x,
         y: initialPosition.y,
-        isWalking: false,
+        isMoviment: false,
         isLeftDirection: false
     });
+
+    const randomDirections = Math.floor(Math.random() * (4 - 0))
+    console.log(randomDirections);
 
     useEventListener('keydown', (e: KeyboardEvent) => {
         if (Object.values(EDirection).includes(e.key as EDirection)) {

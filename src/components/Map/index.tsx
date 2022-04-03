@@ -22,14 +22,13 @@ const getCanvasMap = () => {
                 canvasArray.push(<Character key={key} initialPosition={position} />);
             textValue === ECanvas.POKEMON &&
                 canvasArray.push(<Pokemon key={key} initialPosition={position} />);
-
         }
     }
 
     return canvasArray;
 }
-
 const elements = getCanvasMap();
+
 const Map = () => {
     const [activeDebugger, setActiveDebugger] = useState(false);
 
@@ -41,8 +40,7 @@ const Map = () => {
                 Debugger
             </Button>
             <div className="map" style={{ minWidth: MAP_SIZE_X, minHeight: MAP_SIZE_Y }}>
-                {
-                    activeDebugger &&
+                {activeDebugger &&
                     <Debugger />
                 }
                 {elements}
