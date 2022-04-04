@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Tile } from "..";
 import { CanvasContext } from "../../contexts/canvas";
-import { canvas } from "../../settings/helpers";
+import useDebugger from "../../hooks/useDebugger";
 import { ECanvas } from "../../settings/types";
-import Button from "../Button";
 
 const getCanvasMap = (canvas: ECanvas[][]) => {
     const canvasArray = [];
@@ -22,13 +21,16 @@ const getCanvasMap = (canvas: ECanvas[][]) => {
     return canvasArray;
 }
 
-const Debugger: React.FC = () => {
+const Debugger = () => {
     const canvasContext: any = useContext(CanvasContext);
     const tiles = getCanvasMap(canvasContext.canvas);
+    const activeDebuggerScreen = useDebugger();
 
     return (
-        < div>
-            {tiles}
+        <div>
+            {activeDebuggerScreen &&
+                tiles
+            }
         </div>
     );
 }

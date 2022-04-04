@@ -20,19 +20,16 @@ const CanvasProvider = ({children}: ICanvasProviderProps) => {
             const nextMove = checkValidMoviment(nextPosition, walker);
 
             if (nextMove.valid) {
-                setCurrentCanvas((prevState): any => {
+                setCurrentCanvas((prevState) => {
                     const newCanvas = [...currentCanvas.canvas];
                     const currentValue = newCanvas[currentPosition.x][currentPosition.y];
 
                     newCanvas[currentPosition.x][currentPosition.y] = ECanvas.FLOOR;
                     newCanvas[nextPosition.x][nextPosition.y] = currentValue;
-
-                    console.log(newCanvas);
                     
                     return {
                         canvas: newCanvas,
                         setCanvas: prevState.setCanvas,
-                        
                     }
 
                 })

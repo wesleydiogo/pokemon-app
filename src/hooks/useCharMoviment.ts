@@ -12,7 +12,7 @@ const useCharacterMoviment = (initialPosition: IPositionProps) => {
         isLeftDirection: true,
     });
 
-    useEventListener('keydown', (e: KeyboardEvent) => {
+    useEventListener('keydown', (e: KeyboardEvent) => {        
         if (Object.values(EDirection).includes(e.key as EDirection)) {
             let direction = e.key as EDirection;
             let character = ECanvas.CHARACTER;

@@ -5,8 +5,6 @@ import Debugger from '../Debugger';
 import { MAP_SIZE_X, MAP_SIZE_Y } from '../../settings/constants';
 import { canvas } from '../../settings/helpers';
 import { ECanvas } from '../../settings/types';
-import { useState } from 'react';
-import Button from '../Button';
 
 const getCanvasMap = () => {
     const canvasArray = [];
@@ -29,23 +27,18 @@ const getCanvasMap = () => {
 }
 const elements = getCanvasMap();
 
-const Map = () => {
-    const [activeDebugger, setActiveDebugger] = useState(false);
+const Map = () => {    
 
     return (
-        <>
-            <Button
-                className="primary"
-                onClick={() => setActiveDebugger(!activeDebugger)}>
-                Debugger
-            </Button>
-            <div className="map" style={{ minWidth: MAP_SIZE_X, minHeight: MAP_SIZE_Y }}>
-                {activeDebugger &&
-                    <Debugger />
-                }
-                {elements}
-            </div>
-        </>
+        <div
+            className="map"
+            style={{
+                minWidth: MAP_SIZE_X,
+                minHeight: MAP_SIZE_Y
+            }}>
+            <Debugger />
+            {elements}
+        </div>
     );
 }
 export default Map;
