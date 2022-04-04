@@ -9,10 +9,10 @@ interface IProps {
 
 const Character = ({initialPosition}: IProps) => {
     const charPosition = useCharacterMoviment(initialPosition);
-    
+        
     return (
         <div
-            className={`character character--${charPosition.isMoviment ? 'moviment' : 'front'}`}
+            className={`character character--${charPosition.isMoving ? 'moviment' : 'front'}`}
             style={{
                 width: TILE_SIZE,
                 height: TILE_SIZE,

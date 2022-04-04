@@ -18,6 +18,7 @@ const Pokemon = ({initialPosition}: IProps) => {
             style={{
                 width: TILE_SIZE * charScale,
                 height: TILE_SIZE * charScale,
+                transform: `scaleX(${pokemonPosition.isLeftDirection ? 1 : -1})`,
                 top: (TILE_SIZE * pokemonPosition.x) - TILE_SIZE,
                 left: (TILE_SIZE * pokemonPosition.y) - TILE_SIZE,
             }}

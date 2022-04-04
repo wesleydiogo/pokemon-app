@@ -4,7 +4,7 @@ import pokemonLogo from '../../assets/Logo 1.png';
 import { Button } from '../../components';
 import { useNavigate } from 'react-router-dom'
 
-export default () => {
+const StartScreen = () => {
     const [disabled, setDisabled] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [gameStarted, setGameStarted] = useState<boolean>(false);
@@ -33,3 +33,4 @@ export default () => {
         </div>
     );
 }
+export default StartScreen;

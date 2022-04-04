@@ -1,7 +1,7 @@
-import Start from './Start';
-import GamePlay from './GamePlay';
+import StartScreen from './StartScreen';
+import GameScreen from './GameScreen';
 
 export {
-    Start,
-    GamePlay
+    StartScreen,
+    GameScreen
 }

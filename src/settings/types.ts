@@ -1,7 +1,7 @@
 export interface IPositionProps {
     x: number,
     y: number,
-    isMoviment?: boolean,
+    isMoving?: boolean,
     isLeftDirection?: boolean
 }
 
@@ -12,9 +12,14 @@ export enum EDirection {
     RIGHT = 'ArrowRight'
 }
 
+export enum ESideDirection {
+    LEFT = 'Left',
+    RIGHT = 'Right'
+}
+
 export enum ECanvas {
     FLOOR = 0,
     OBSTACLE = 1,
     POKEMON = 2,
     CHARACTER = 3 
-}   
+}

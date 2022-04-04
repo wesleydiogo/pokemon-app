@@ -1,28 +1,28 @@
-import { useState } from 'react';
-import { checkValidMoviment, handleNextMoviment } from '../settings/helpers';
-import { EDirection, IPositionProps } from '../settings/types';
+import { useContext, useState } from 'react';
+import { ECanvas, EDirection, IPositionProps } from '../settings/types';
 import useEventListener from '@use-it/event-listener';
+import { CanvasContext } from '../contexts/canvas';
 
 const useCharacterMoviment = (initialPosition: IPositionProps) => {
+    const canvasContext: any = useContext(CanvasContext);
     const [position, setPosition] = useState<IPositionProps>({
         x: initialPosition.x,
         y: initialPosition.y,
-        isMoviment: false,
-        isLeftDirection: false
+        isMoving: false,
+        isLeftDirection: true,
     });
-
-    const randomDirections = Math.floor(Math.random() * (4 - 0))
-    console.log(randomDirections);
 
     useEventListener('keydown', (e: KeyboardEvent) => {
         if (Object.values(EDirection).includes(e.key as EDirection)) {
+            let direction = e.key as EDirection;
+            let character = ECanvas.CHARACTER;
+            const { nextPosition, nextMove } = canvasContext.setCanvas(direction, position, character);            
 
-            const nextMoviment = handleNextMoviment(e.key as EDirection, position);
-            const isValidMoviment = checkValidMoviment(nextMoviment);
+            nextMove.valid &&
+                setPosition(nextPosition);
 
-            isValidMoviment &&
-                setPosition(nextMoviment);
-
+            nextMove.foundPokemon &&
+                console.log("Pokemon encontrado!")
         }
     });
 

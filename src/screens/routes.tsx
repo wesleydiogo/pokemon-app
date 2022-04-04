@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import {
-    Start,
-    GamePlay
+    StartScreen,
+    GameScreen
 } from './index';
 
 export default () =>
     <Routes>
-        <Route path={`${process.env.PUBLIC_URL}/`} element={<Start />} />
-        {/* {gameStarted && */}
-            <Route path={`${process.env.PUBLIC_URL}/gameplay`} element={<GamePlay />} />
+        <Route path={`${process.env.PUBLIC_URL}/`} element={<StartScreen />} />
+        {/* {gameStartScreened && */}
+            <Route path={`${process.env.PUBLIC_URL}/gameplay`} element={<GameScreen />} />
         {/* } */}
     </Routes>

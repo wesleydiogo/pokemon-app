@@ -1,0 +1,54 @@
+import React, { createContext, useState } from "react";
+import { canvas, checkValidMoviment, handleNextMoviment } from "../../settings/helpers";
+import { ECanvas, EDirection, IPositionProps } from "../../settings/types";
+
+export const CanvasContext: any = createContext({
+    canvas: [],
+    setCanvas: (direction: EDirection, currentPosition: IPositionProps, walker: ECanvas) => null
+});
+
+interface ICanvasProviderProps {
+    children: React.ReactNode
+}
+
+const CanvasProvider = ({children}: ICanvasProviderProps) => {
+    const [currentCanvas, setCurrentCanvas] = useState({
+        canvas: canvas,
+        setCanvas: (direction: EDirection, currentPosition: IPositionProps, walker: ECanvas) => {
+
+            const nextPosition = handleNextMoviment(direction, currentPosition);
+            const nextMove = checkValidMoviment(nextPosition, walker);
+
+            if (nextMove.valid) {
+                setCurrentCanvas((prevState): any => {
+                    const newCanvas = [...currentCanvas.canvas];
+                    const currentValue = newCanvas[currentPosition.x][currentPosition.y];
+
+                    newCanvas[currentPosition.x][currentPosition.y] = ECanvas.FLOOR;
+                    newCanvas[nextPosition.x][nextPosition.y] = currentValue;
+
+                    console.log(newCanvas);
+                    
+                    return {
+                        canvas: newCanvas,
+                        setCanvas: prevState.setCanvas,
+                        
+                    }
+
+                })
+            }
+
+            return {
+                nextPosition,
+                nextMove
+            }
+        }
+    });
+
+    return (
+        <CanvasContext.Provider value={currentCanvas}>
+            {children}
+        </CanvasContext.Provider>
+    )
+}
+export default CanvasProvider;
