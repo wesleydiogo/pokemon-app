@@ -1,13 +1,16 @@
 import { Map } from '../';
 import CanvasProvider from '../../contexts/canvas';
+import PokemonProvider from '../../contexts/pokemon';
 import './styles.css';
 
 const Game = () => {
     return (
         <CanvasProvider>
-            <div className='game'>
-                <Map />
-            </div>
+            <PokemonProvider>
+                <div className='game'>
+                    <Map />
+                </div>
+            </PokemonProvider>
         </CanvasProvider>
     );
 }

@@ -23,3 +23,16 @@ export enum ECanvas {
     POKEMON = 2,
     CHARACTER = 3 
 }
+
+// ************************************* CONTEXTS TYPES ****************************************
+export interface ICanvasContextProps {
+    canvas: ECanvas[][],
+    setCanvas: (direction: EDirection, currentPosition: IPositionProps, walker: ECanvas) => void
+}
+
+export interface IPokemonContextProps {
+    found: boolean,
+    position: number[],
+    setUpdateFoundPokemon: () => void
+}
+// ********************************************************************************************

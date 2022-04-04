@@ -52,6 +52,7 @@ export const checkValidMoviment = (nextPosition: IPositionProps, walker: ECanvas
 
 const getCharValidMoviment = (canvasValue: ECanvas) => {
     const validMoves = [ECanvas.FLOOR, ECanvas.POKEMON];
+
     return {
         valid: validMoves.includes(canvasValue),
         foundPokemon: canvasValue === ECanvas.POKEMON
@@ -60,7 +61,6 @@ const getCharValidMoviment = (canvasValue: ECanvas) => {
 const getPokemonValidMoviment = (canvasValue: ECanvas) => {
     return {
         valid: canvasValue === ECanvas.FLOOR,
-        foundPokemon: canvasValue === ECanvas.POKEMON
     }
 }
 

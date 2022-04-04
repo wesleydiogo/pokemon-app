@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
 import { canvas, checkValidMoviment, handleNextMoviment } from "../../settings/helpers";
-import { ECanvas, EDirection, IPositionProps } from "../../settings/types";
+import { ECanvas, EDirection, ICanvasContextProps, IPositionProps } from "../../settings/types";
 
-export const CanvasContext: any = createContext({
+export const CanvasContext = createContext<ICanvasContextProps>({
     canvas: [],
     setCanvas: (direction: EDirection, currentPosition: IPositionProps, walker: ECanvas) => null
 });

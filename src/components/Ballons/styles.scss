@@ -1,0 +1,13 @@
+.ballon {
+    background: url('../../assets/ballons/Base.png') no-repeat no-repeat;
+    background-size: 100%;
+    width: 64px;
+    height: 60px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: -70px;
+}
