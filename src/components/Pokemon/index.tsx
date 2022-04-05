@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import usePokemonMoviment from '../../hooks/usePokemonMoviment';
 import { TILE_SIZE } from '../../settings/constants';
 import { IPositionProps } from '../../settings/types';
@@ -19,7 +18,7 @@ const Pokemon = ({initialPosition}: IProps) => {
                 width: TILE_SIZE * charScale,
                 height: TILE_SIZE * charScale,
                 transform: `scaleX(${pokemonPosition.isLeftDirection ? 1 : -1})`,
-                top: (TILE_SIZE * pokemonPosition.x) - TILE_SIZE,
+                top: ((TILE_SIZE * pokemonPosition.x) - TILE_SIZE) - 18,
                 left: (TILE_SIZE * pokemonPosition.y) - TILE_SIZE,
             }}
         />

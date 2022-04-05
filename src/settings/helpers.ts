@@ -51,7 +51,8 @@ export const checkValidMoviment = (nextPosition: IPositionProps, walker: ECanvas
 }
 
 const getCharValidMoviment = (canvasValue: ECanvas) => {
-    const validMoves = [ECanvas.FLOOR, ECanvas.POKEMON];
+    const validMoves = [ECanvas.FLOOR];
+    // const validMoves = [ECanvas.FLOOR, ECanvas.POKEMON];
 
     return {
         valid: validMoves.includes(canvasValue),
@@ -64,7 +65,7 @@ const getPokemonValidMoviment = (canvasValue: ECanvas) => {
     }
 }
 
-export const handleRandomDirection = () => {
+export const handleRandomDirection = (): EDirection | undefined => {
     const randomDirections = Math.floor(Math.random() * (4 - 0));
     const direction = {
         UP: 0,
@@ -73,14 +74,10 @@ export const handleRandomDirection = () => {
         RIGHT: 3
     }
 
-    switch (randomDirections) {
-        case direction.UP:
-            return EDirection.UP
-        case direction.DOWN:
-            return EDirection.DOWN
-        case direction.LEFT:
-            return EDirection.LEFT
-        case direction.RIGHT:
-            return EDirection.RIGHT
+    if (Object.values(direction).includes(randomDirections)) {      
+        if (randomDirections === direction.UP) return EDirection.UP
+        if (randomDirections === direction.DOWN) return EDirection.DOWN
+        if (randomDirections === direction.LEFT) return EDirection.LEFT
+        if (randomDirections === direction.RIGHT) return EDirection.RIGHT
     }
 }

@@ -8,17 +8,17 @@ interface IPokemonProviderProps {
 export const PokemonContext = createContext<IPokemonContextProps>({
     found: false,
     position: [],
-    setUpdateFoundPokemon: () => null
+    setUpdateFoundPokemon: (foundPokemon) => null
 });
 
 const PokemonProvider = ({ children }: IPokemonProviderProps) => {
-    const [foundPokemon, setFoundPokemon] = useState({
+    const [foundPokemon, setFoundPokemon] = useState<IPokemonContextProps>({
         found: false,
         position: [],
-        setUpdateFoundPokemon: () => {
+        setUpdateFoundPokemon: (foundPokemon) => {
             setFoundPokemon((prevState) => {
                 return {
-                    found: true,
+                    found: foundPokemon,
                     position: [],
                     setUpdateFoundPokemon: prevState.setUpdateFoundPokemon
                 }

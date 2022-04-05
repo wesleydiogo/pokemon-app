@@ -33,6 +33,6 @@ export interface ICanvasContextProps {
 export interface IPokemonContextProps {
     found: boolean,
     position: number[],
-    setUpdateFoundPokemon: () => void
+    setUpdateFoundPokemon: (foundPokemon: boolean) => void
 }
 // ********************************************************************************************

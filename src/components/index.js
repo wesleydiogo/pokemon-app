@@ -5,7 +5,7 @@ import Character from './Character';
 import Pokemon from './Pokemon';
 import Debugger from './Debugger';
 import Tile from './Debugger/Tile';
-import Ballon from './Ballons';
+import Ballon from './Ballon';
 
 export {
     Game,

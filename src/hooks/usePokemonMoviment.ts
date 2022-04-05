@@ -1,23 +1,30 @@
 import { useContext, useState } from 'react';
-import { checkValidMoviment, handleNextMoviment, handleRandomDirection } from '../settings/helpers';
-import { ECanvas, EDirection, IPositionProps } from '../settings/types';
+import { handleRandomDirection } from '../settings/helpers';
+import { ECanvas, EDirection, ICanvasContextProps, IPositionProps } from '../settings/types';
 import useInterval from '@use-it/interval';
 import { CanvasContext } from '../contexts/canvas';
 
+interface IProps {
+    nextPosition: IPositionProps,
+    nextMove: {
+        valid: boolean
+    }
+}
+
 const usePokemonMoviment = (initialPosition: IPositionProps) => {
-    const canvasContext: any = useContext(CanvasContext);
+    const canvasContext = useContext<ICanvasContextProps>(CanvasContext);
     const [position, setPosition] = useState<IPositionProps>({
         x: initialPosition.x,
         y: initialPosition.y,
         isMoving: true,
         isLeftDirection: true
     });
-    const speed = 3000;
-    let character = ECanvas.POKEMON;
+    const speed = 1000;
+    let pokemon = ECanvas.POKEMON;
 
     useInterval(() => {
         const direction = handleRandomDirection();
-        const { nextPosition, nextMove } = canvasContext.setCanvas(direction, position, character);
+        const { nextPosition, nextMove }: any = canvasContext.setCanvas(direction as EDirection, position, pokemon);
 
         nextMove.valid &&
             setPosition(nextPosition);

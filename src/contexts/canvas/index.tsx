@@ -4,7 +4,7 @@ import { ECanvas, EDirection, ICanvasContextProps, IPositionProps } from "../../
 
 export const CanvasContext = createContext<ICanvasContextProps>({
     canvas: [],
-    setCanvas: (direction: EDirection, currentPosition: IPositionProps, walker: ECanvas) => null
+    setCanvas: (direction: EDirection | undefined, currentPosition: IPositionProps, walker: ECanvas) => null
 });
 
 interface ICanvasProviderProps {
@@ -25,7 +25,7 @@ const CanvasProvider = ({children}: ICanvasProviderProps) => {
                     const currentValue = newCanvas[currentPosition.x][currentPosition.y];
 
                     newCanvas[currentPosition.x][currentPosition.y] = ECanvas.FLOOR;
-                    newCanvas[nextPosition.x][nextPosition.y] = currentValue;
+                    newCanvas[nextPosition.x][nextPosition.y] = currentValue;                    
                     
                     return {
                         canvas: newCanvas,
@@ -34,7 +34,6 @@ const CanvasProvider = ({children}: ICanvasProviderProps) => {
 
                 })
             }
-
             return {
                 nextPosition,
                 nextMove
