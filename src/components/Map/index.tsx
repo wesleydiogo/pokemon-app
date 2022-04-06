@@ -67,13 +67,15 @@ const Map = () => {
         }
     });
 
+    const cameraLeft = TILE_SIZE * 0;
+    const cameraTop = TILE_SIZE * 0;
+
     return (
         <div
             className="map__camera"
             style={{
                 width: TILE_SIZE * 20,
                 height: TILE_SIZE * 13,
-
             }}
         >
             <div
@@ -81,7 +83,7 @@ const Map = () => {
                 style={{
                     minWidth: MAP_SIZE_X,
                     minHeight: MAP_SIZE_Y,
-                    transform: `translate(${positionCamera.x}px, ${positionCamera.y}px)`
+                    transform: `translate(${positionCamera.x + cameraLeft}px, ${positionCamera.y + cameraTop}px)`
                 }}>
                 <Debugger />
                 {elements}

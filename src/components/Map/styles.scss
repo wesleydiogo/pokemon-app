@@ -5,7 +5,9 @@
 .map__camera {
     overflow: hidden;
     // background-color: #000;
+    // outline: 4px solid #fff;
 
+    display: flex;
     position: relative;
 }
 .map {

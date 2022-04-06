@@ -1,11 +1,11 @@
-interface Props {
+interface IButtonProps {
     className: string,
     onClick: () => void,
     disabled?: boolean,
     children: React.ReactNode
 }
 
-export default ({ className, onClick, disabled, children }: Props) => {
+const Button = ({ className, onClick, disabled, children }: IButtonProps) => {
 
     return (
         <button
@@ -19,3 +19,4 @@ export default ({ className, onClick, disabled, children }: Props) => {
         </button>
     );
 }
+export default Button;

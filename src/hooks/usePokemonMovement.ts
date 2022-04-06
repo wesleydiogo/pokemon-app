@@ -9,7 +9,7 @@ const usePokemonMovement = (initialPosition: IPositionProps) => {
     const [position, setPosition] = useState<IPositionProps>({
         x: initialPosition.x,
         y: initialPosition.y,
-        isMoving: false,
+        isMoving: true,
         isLeftDirection: true
     });
     const speed = 1000;

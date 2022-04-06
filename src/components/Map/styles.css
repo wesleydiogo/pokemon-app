@@ -5,6 +5,9 @@
 
 .map__camera {
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
 }
 
