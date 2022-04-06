@@ -1,6 +1,8 @@
+import useEventListener from '@use-it/event-listener';
+import { TILE_SIZE } from './constants';
 import { EDirection, IPositionProps, ECanvas } from './types';
 
-export const handleNextMoviment = (direction: EDirection, position: IPositionProps): IPositionProps => {
+export const handleNextMovement = (direction: EDirection, position: IPositionProps): IPositionProps => {
 
     switch (direction) {
         case EDirection.UP:
@@ -39,18 +41,17 @@ export const canvas = [
     [OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB, OB]
 ];
 
-export const checkValidMoviment = (nextPosition: IPositionProps, walker: ECanvas) => {
+export const checkValidMovement = (nextPosition: IPositionProps, walker: ECanvas) => {
     const canvasValue = canvas[nextPosition.x][nextPosition.y];
 
     const result = walker === ECanvas.CHARACTER ?
-        getCharValidMoviment(canvasValue)
+        getCharValidMovement(canvasValue)
         :
-        getPokemonValidMoviment(canvasValue)
+        getPokemonValidMovement(canvasValue)
 
     return result;
 }
-
-const getCharValidMoviment = (canvasValue: ECanvas) => {
+const getCharValidMovement = (canvasValue: ECanvas) => {
     const validMoves = [ECanvas.FLOOR];
     // const validMoves = [ECanvas.FLOOR, ECanvas.POKEMON];
 
@@ -59,9 +60,10 @@ const getCharValidMoviment = (canvasValue: ECanvas) => {
         foundPokemon: canvasValue === ECanvas.POKEMON
     }
 }
-const getPokemonValidMoviment = (canvasValue: ECanvas) => {
+const getPokemonValidMovement = (canvasValue: ECanvas) => {
     return {
         valid: canvasValue === ECanvas.FLOOR,
+        foundPokemon: canvasValue === ECanvas.POKEMON
     }
 }
 
@@ -74,7 +76,7 @@ export const handleRandomDirection = (): EDirection | undefined => {
         RIGHT: 3
     }
 
-    if (Object.values(direction).includes(randomDirections)) {      
+    if (Object.values(direction).includes(randomDirections)) {
         if (randomDirections === direction.UP) return EDirection.UP
         if (randomDirections === direction.DOWN) return EDirection.DOWN
         if (randomDirections === direction.LEFT) return EDirection.LEFT

@@ -1,4 +1,4 @@
-import usePokemonMoviment from '../../hooks/usePokemonMoviment';
+import usePokemonMovement from '../../hooks/usePokemonMovement';
 import { TILE_SIZE } from '../../settings/constants';
 import { IPositionProps } from '../../settings/types';
 import './styles.css';
@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const Pokemon = ({initialPosition}: IProps) => {
-    const pokemonPosition = usePokemonMoviment(initialPosition); 
+    const pokemonPosition = usePokemonMovement(initialPosition); 
     const charScale = 0.9;
 
     return (

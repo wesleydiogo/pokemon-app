@@ -1,6 +1,8 @@
 .character {
   position: absolute;
   z-index: 1;
+  -webkit-transition: all ease .2s;
+  transition: all ease .2s;
 }
 
 .character--frontSprite {
@@ -9,7 +11,7 @@
   background-position: center;
 }
 
-.character--movimentSprite {
+.character--movementSprite {
   background: url("../../assets/Walking.gif") no-repeat no-repeat;
   background-size: contain;
   background-position: center;

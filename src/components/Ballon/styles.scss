@@ -1,9 +1,7 @@
 .ballon {
-    background: url('../../assets/ballons/Base.png') no-repeat no-repeat;
-    background-size: 100%;
     width: 64px;
     height: 60px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,4 +12,26 @@
     transition: opacity .2s;
 
     z-index: 1;
+}
+.ballon--base {
+    background: url('../../assets/ballons/Base.png') no-repeat no-repeat;
+    background-size: 100%;
+    height: 60px;
+    width: 64px;
+}
+.ballon--search {
+    background: url('../../assets/ballons/search.png') no-repeat no-repeat;
+    background-size: 100%;
+    height: 30px;
+    width: 30px;
+    margin-bottom: 10px;
+}
+.ballon--loader {
+    background: url('../../assets/ballons/loader.png') no-repeat no-repeat;
+    background-size: 100%;
+
+}
+.ballon--alert {
+    background: url('../../assets/ballons/alert-triangle.png') no-repeat no-repeat;
+    background-size: 100%;
 }

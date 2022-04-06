@@ -2,9 +2,12 @@ import './styles.css'
 import Character from '../Character';
 import Pokemon from '../Pokemon';
 import Debugger from '../Debugger';
-import { MAP_SIZE_X, MAP_SIZE_Y } from '../../settings/constants';
+import { MAP_SIZE_X, MAP_SIZE_Y, TILE_SIZE } from '../../settings/constants';
 import { canvas } from '../../settings/helpers';
-import { ECanvas } from '../../settings/types';
+import { ECanvas, EDirection } from '../../settings/types';
+import { useContext, useState } from 'react';
+import useEventListener from '@use-it/event-listener';
+import { CameraContext } from '../../contexts/camera';
 
 const getCanvasMap = () => {
     const canvasArray = [];
@@ -27,17 +30,62 @@ const getCanvasMap = () => {
 }
 const elements = getCanvasMap();
 
-const Map = () => {    
+const Map = () => {
+    const { valid } = useContext(CameraContext);
+    const [positionCamera, setPositionCamera] = useState({
+        x: 0,
+        y: 0
+    });
+
+    useEventListener('keydown', (e: KeyboardEvent) => {
+
+        if (valid) {
+            if (e.key === EDirection.UP) {
+                setPositionCamera({
+                    ...positionCamera,
+                    y: positionCamera.y + TILE_SIZE
+                });
+            }
+            if (e.key === EDirection.DOWN) {
+                setPositionCamera({
+                    ...positionCamera,
+                    y: positionCamera.y - TILE_SIZE
+                });
+            }
+            if (e.key === EDirection.LEFT) {
+                setPositionCamera({
+                    ...positionCamera,
+                    x: positionCamera.x + TILE_SIZE
+                });
+            }
+            if (e.key === EDirection.RIGHT) {
+                setPositionCamera({
+                    ...positionCamera,
+                    x: positionCamera.x - TILE_SIZE
+                });
+            }
+        }
+    });
 
     return (
         <div
-            className="map"
+            className="map__camera"
             style={{
-                minWidth: MAP_SIZE_X,
-                minHeight: MAP_SIZE_Y
-            }}>
-            <Debugger />
-            {elements}
+                width: TILE_SIZE * 20,
+                height: TILE_SIZE * 13,
+
+            }}
+        >
+            <div
+                className="map"
+                style={{
+                    minWidth: MAP_SIZE_X,
+                    minHeight: MAP_SIZE_Y,
+                    transform: `translate(${positionCamera.x}px, ${positionCamera.y}px)`
+                }}>
+                <Debugger />
+                {elements}
+            </div>
         </div>
     );
 }

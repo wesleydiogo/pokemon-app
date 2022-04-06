@@ -4,19 +4,12 @@ import { ECanvas, EDirection, ICanvasContextProps, IPositionProps } from '../set
 import useInterval from '@use-it/interval';
 import { CanvasContext } from '../contexts/canvas';
 
-interface IProps {
-    nextPosition: IPositionProps,
-    nextMove: {
-        valid: boolean
-    }
-}
-
-const usePokemonMoviment = (initialPosition: IPositionProps) => {
+const usePokemonMovement = (initialPosition: IPositionProps) => {
     const canvasContext = useContext<ICanvasContextProps>(CanvasContext);
     const [position, setPosition] = useState<IPositionProps>({
         x: initialPosition.x,
         y: initialPosition.y,
-        isMoving: true,
+        isMoving: false,
         isLeftDirection: true
     });
     const speed = 1000;
@@ -32,4 +25,4 @@ const usePokemonMoviment = (initialPosition: IPositionProps) => {
 
     return position;
 }
-export default usePokemonMoviment;
+export default usePokemonMovement;

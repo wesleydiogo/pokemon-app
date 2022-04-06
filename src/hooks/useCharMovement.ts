@@ -3,10 +3,12 @@ import { ECanvas, EDirection, ICanvasContextProps, IPositionProps } from '../set
 import useEventListener from '@use-it/event-listener';
 import { CanvasContext } from '../contexts/canvas';
 import { PokemonContext } from '../contexts/pokemon';
+import { CameraContext } from '../contexts/camera';
 
-const useCharacterMoviment = (initialPosition: IPositionProps) => {
-    const canvasContext= useContext<ICanvasContextProps>(CanvasContext);
+const useCharacterMovement = (initialPosition: IPositionProps) => {
+    const canvasContext = useContext<ICanvasContextProps>(CanvasContext);
     const pokemonContext = useContext(PokemonContext);
+    const cameraContext = useContext(CameraContext);
     const [position, setPosition] = useState<IPositionProps>({
         x: initialPosition.x,
         y: initialPosition.y,
@@ -23,11 +25,13 @@ const useCharacterMoviment = (initialPosition: IPositionProps) => {
             nextMove.valid &&
                 setPosition(nextPosition);
 
+            cameraContext.getValidCameraMovement(nextMove.valid);
+
             pokemonContext.setUpdateFoundPokemon(nextMove.foundPokemon); // Passando valor booleano para contexto pokemon
-                
+
         }
     });
 
     return position;
 }
-export default useCharacterMoviment;
+export default useCharacterMovement;

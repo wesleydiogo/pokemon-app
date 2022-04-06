@@ -1,6 +1,18 @@
+:root {
+    --pixel-size: 64px
+}
+
+.map__camera {
+    overflow: hidden;
+    // background-color: #000;
+
+    position: relative;
+}
 .map {
 background: url("../../assets//Map.png") no-repeat no-repeat;
 background-size: 100%;
 
 position: relative;
+
+transition: all ease .2s;
 }
